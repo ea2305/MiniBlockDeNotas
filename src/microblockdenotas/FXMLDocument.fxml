@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane  id="AnchorPane" prefHeight="300" prefWidth="300" xmlns:fx="http://javafx.com/fxml/1" fx:controller="microblockdenotas.FXMLDocumentController">
+    <children>
+        <TextArea fx:id="TextoArea" layoutX="0" layoutY="27"   prefWidth="300" prefHeight="500" onKeyTyped="#TextAreaArray" >
+             <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem text="Deshacer" onAction="#deshacer" /> 
+                        <MenuItem text="Rehacer" onAction="#rehacer"/> 
+                    </items>
+                </ContextMenu>
+            </contextMenu>    
+        </TextArea>
+        
+        <MenuBar prefHeight="20" prefWidth="300" style="fx-background-color: #819FF7;" >
+            <menus>
+                <Menu text="Archivo" >
+                    <items>
+                        <MenuItem text="Creditos" onAction="#creditos" />
+                        <MenuItem text="Salir" onAction="#salir"/>
+                    </items>
+                    
+                </Menu>
+                <Menu text="Edición" >
+                    
+                    <items>
+                        <MenuItem text="Deshacer" onAction="#deshacer"/>
+                        <MenuItem text="Rehacer" onAction="#rehacer"/>
+                    </items>
+                    
+                </Menu>
+
+
+            </menus>
+        </MenuBar>
+    </children>
+</AnchorPane>
