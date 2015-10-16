@@ -15,7 +15,7 @@ import javafx.scene.control.TextArea;
 
 /**
  *
- * @author ealbores
+ * @author kkkk
  */
 
 public class FXMLDocumentController implements Initializable {
@@ -23,8 +23,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label label;
     @FXML TextArea TextoArea;
+    private Controla ct = new Controla();
     
-    Controla ct = new Controla();
+    
     
     @FXML private void TextAreaArray(Event event){
         System.out.println("LL");
@@ -38,16 +39,7 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML private void deshacer(ActionEvent event){
-        
-        try{
             TextoArea.setText(ct.deshacer());
-        }catch(Exception e){
-            Alert alert1 = new Alert(AlertType.INFORMATION);
-            alert1.setTitle("No hay nada que sacar!");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Sin elementos");
-            alert1.showAndWait();
-        }
     }
     
     @FXML private void salir(ActionEvent event){
@@ -83,6 +75,27 @@ public class FXMLDocumentController implements Initializable {
         alert1.showAndWait();
 
         
+    }
+     
+    @FXML private void abrir(ActionEvent event){
+        TextoArea.setText(ct.openFile());
+    }
+     
+    @FXML private void guardar(ActionEvent event){
+        
+    }
+    
+    @FXML private void guardarComo(ActionEvent event){
+        // code pendiente
+    }
+    @FXML private void selectColor(ActionEvent event){
+        // code pendiente
+    }
+    @FXML private void copiar(ActionEvent event){
+        // code pendiente
+    }
+    @FXML private void pegar(ActionEvent event){
+        // code pendiente
     }
     
     

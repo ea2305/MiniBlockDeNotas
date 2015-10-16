@@ -14,6 +14,9 @@
                     <items>
                         <MenuItem text="Deshacer" onAction="#deshacer" /> 
                         <MenuItem text="Rehacer" onAction="#rehacer"/> 
+                        <MenuItem text="Guardar" onAction="#guardar" /> 
+                        <MenuItem text="Copiar" onAction="#copiar" />
+                        <MenuItem text="Pegar" onAction="#pegar" />
                     </items>
                 </ContextMenu>
             </contextMenu>    
@@ -23,6 +26,9 @@
             <menus>
                 <Menu text="Archivo" >
                     <items>
+                        <MenuItem text="Abrir" onAction="#abrir"  />
+                        <MenuItem text="Guardar" onAction="#guardar" />
+                        <MenuItem text="Guardar Como"  onAction="#guardarComo" />
                         <MenuItem text="Creditos" onAction="#creditos" />
                         <MenuItem text="Salir" onAction="#salir"/>
                     </items>
@@ -33,6 +39,7 @@
                     <items>
                         <MenuItem text="Deshacer" onAction="#deshacer"/>
                         <MenuItem text="Rehacer" onAction="#rehacer"/>
+                        <MenuItem text="Color" onAction="#selectColor" />
                     </items>
                     
                 </Menu>

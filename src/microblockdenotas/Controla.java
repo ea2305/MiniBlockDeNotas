@@ -3,29 +3,70 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package microblockdenotas;
 
-/**
- *
- * @author andre
- */
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.List;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
 public class Controla {
     
-    public static int cont=0;
+    private final FileChooser fileDialog = new FileChooser();
+    
+    private int index = 0;
+    
     String[ ] Contenedor = new String[100];
+    
     public Controla(){
-        Contenedor[cont++] = " ";
+        Contenedor[index++] = " ";
     }
+
     public void setString(String cadena){
         System.out.println(cadena);
-        Contenedor[cont++] = cadena;
+        Contenedor[index++] = cadena;
     }
 
     public String rehacer(){
-        return Contenedor[++cont];
+        return Contenedor[++index];
     }
 
     public String deshacer(){
-        return Contenedor[--cont];
+        if(index != 0)
+            return Contenedor[--index];
+        return null;
     }
+    
+    public void resetIndex(){
+        this.index = 0;
+    }
+    
+    public String openFile(){
+        fileDialog.setTitle("Open Resume");
+		
+		File file = fileDialog.showOpenDialog(new Stage());//?????
+		
+		if (file == null) {
+			return "Archivo no existe";
+		}
+	
+		try {
+			String texto = "";
+                        List<String> ls = Files.readAllLines(file.toPath());
+                        for(int i=0; i<ls.size(); i++){
+                            texto += ls.get(i) + "\n" ;
+                        }
+                        return texto;
+			
+		}catch(IOException e) {
+			//alerta pendiente eh fernando te ablo a ti deja el lol
+			e.printStackTrace();
+                        return "Error";
+			
+		}
+    }
+    
 }
