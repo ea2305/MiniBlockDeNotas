@@ -9,7 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
@@ -20,14 +22,22 @@ import javafx.scene.control.TextArea;
 
 public class FXMLDocumentController implements Initializable {
     
-    @FXML
-    private Label label;
+    @FXML private Label label,numCaracteres,numFilas;
+    @FXML ColorPicker colorPicker;
+    @FXML Button btnAplicar;
     @FXML TextArea TextoArea;
-    private Controla ct = new Controla();
     
+    private Controla ct = new Controla();
+    private long ContadorFilas = 0;
+    private int ContadorCaracteres = 0;
     
     
     @FXML private void TextAreaArray(Event event){
+        this.ContadorCaracteres = ct.getString();
+        this.numCaracteres.setText("Caracteres: " + this.ContadorCaracteres);
+        //this.numCaracteres.setText("Caracteres: " + this.numCaracteres.getText().length());
+        
+        
         ct.setString(TextoArea.getText());
         
     }
@@ -92,17 +102,21 @@ public class FXMLDocumentController implements Initializable {
     @FXML private void selectColor(ActionEvent event){
         // code pendiente
     }
-    @FXML private void copiar(ActionEvent event){
-        // code pendiente
+
+    @FXML private void aplicarColor(ActionEvent event){
+        String hexColor = colorPicker.getValue().toString();
+        System.out.println("antes : " + hexColor);
+        String hexColorFill = hexColor.substring(2,hexColor.length() - 2);
+        
+        this.TextoArea.setStyle("-fx-text-fill: #" + hexColorFill.trim());
     }
-    @FXML private void pegar(ActionEvent event){
-        // code pendiente
-    }
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        /*
+        this.TextoArea.setStyle("-fx-background-color: red;" +
+                                "-fx-text-fill: red;");
+        */
     }    
     
 }

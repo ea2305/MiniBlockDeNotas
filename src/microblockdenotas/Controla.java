@@ -16,21 +16,27 @@ import javafx.stage.Stage;
 public class Controla {
     
     private final FileChooser fileDialog = new FileChooser();
-    
-    private int index = 0;
-    
-    private int identacion = 0;
-    
     private File file = null;
     
-    String[ ] Contenedor = new String[100];
+    private int index = 0;
+    private int caracteres = 0;
+
+    
+    String[ ] Contenedor;
+    
     
     public Controla(){
+        Contenedor = new String[100];
         Contenedor[index++] = " ";
     }
 
     public void setString(String cadena){
         Contenedor[index++] = cadena;
+    }
+    
+    public int getString(){
+        
+        return Contenedor[index - 1].replace(" ","").length();
     }
 
     public String rehacer(){
