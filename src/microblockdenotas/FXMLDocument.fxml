@@ -6,40 +6,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane  id="AnchorPane" prefHeight="300" prefWidth="300" xmlns:fx="http://javafx.com/fxml/1" fx:controller="microblockdenotas.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="300" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="microblockdenotas.FXMLDocumentController">
     <children>
-        <TextArea fx:id="TextoArea" layoutX="0" layoutY="27"   prefWidth="300" prefHeight="500" onKeyTyped="#TextAreaArray" >
+        <TextArea fx:id="TextoArea" layoutX="0" layoutY="27" onKeyTyped="#TextAreaArray" prefHeight="500" prefWidth="300" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
              <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem text="Deshacer" onAction="#deshacer" /> 
-                        <MenuItem text="Rehacer" onAction="#rehacer"/> 
-                        <MenuItem text="Guardar" onAction="#guardar" /> 
-                        <MenuItem text="Copiar" onAction="#copiar" />
-                        <MenuItem text="Pegar" onAction="#pegar" />
+                        <MenuItem onAction="#deshacer" text="Deshacer" /> 
+                        <MenuItem onAction="#rehacer" text="Rehacer" /> 
+                        <MenuItem onAction="#guardar" text="Guardar" /> 
+                        <MenuItem onAction="#copiar" text="Copiar" />
+                        <MenuItem onAction="#pegar" text="Pegar" />
                     </items>
                 </ContextMenu>
             </contextMenu>    
         </TextArea>
         
-        <MenuBar prefHeight="20" prefWidth="300" style="fx-background-color: #819FF7;" >
+        <MenuBar prefHeight="20" prefWidth="300" style="fx-background-color: #819FF7;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <menus>
-                <Menu text="Archivo" >
+                <Menu text="Archivo">
                     <items>
-                        <MenuItem text="Abrir" onAction="#abrir"  />
-                        <MenuItem text="Guardar" onAction="#guardar" />
-                        <MenuItem text="Guardar Como"  onAction="#guardarComo" />
-                        <MenuItem text="Creditos" onAction="#creditos" />
-                        <MenuItem text="Salir" onAction="#salir"/>
+                        <MenuItem onAction="#abrir" text="Abrir" />
+                        <MenuItem onAction="#guardar" text="Guardar" />
+                        <MenuItem onAction="#guardarComo" text="Guardar Como" />
+                        <MenuItem onAction="#creditos" text="Creditos" />
+                        <MenuItem onAction="#salir" text="Salir" />
                     </items>
                     
                 </Menu>
-                <Menu text="Edición" >
+                <Menu text="Edición">
                     
                     <items>
-                        <MenuItem text="Deshacer" onAction="#deshacer"/>
-                        <MenuItem text="Rehacer" onAction="#rehacer"/>
-                        <MenuItem text="Color" onAction="#selectColor" />
+                        <MenuItem onAction="#deshacer" text="Deshacer" />
+                        <MenuItem onAction="#rehacer" text="Rehacer" />
+                        <MenuItem onAction="#selectColor" text="Color" />
                     </items>
                     
                 </Menu>
