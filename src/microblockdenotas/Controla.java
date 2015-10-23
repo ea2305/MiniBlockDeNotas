@@ -19,6 +19,10 @@ public class Controla {
     
     private int index = 0;
     
+    private int identacion = 0;
+    
+    private File file = null;
+    
     String[ ] Contenedor = new String[100];
     
     public Controla(){
@@ -26,7 +30,6 @@ public class Controla {
     }
 
     public void setString(String cadena){
-        System.out.println(cadena);
         Contenedor[index++] = cadena;
     }
 
@@ -47,26 +50,69 @@ public class Controla {
     public String openFile(){
         fileDialog.setTitle("Open Resume");
 		
-		File file = fileDialog.showOpenDialog(new Stage());//?????
+		file = fileDialog.showOpenDialog(new Stage());
 		
 		if (file == null) {
-			return "Archivo no existe";
+			return "";
 		}
 	
 		try {
 			String texto = "";
                         List<String> ls = Files.readAllLines(file.toPath());
-                        for(int i=0; i<ls.size(); i++){
+                        for(int i=0; i<ls.size(); i++)
                             texto += ls.get(i) + "\n" ;
-                        }
                         return texto;
 			
 		}catch(IOException e) {
-			//alerta pendiente eh fernando te ablo a ti deja el lol
 			e.printStackTrace();
-                        return "Error";
+                        return "";
 			
 		}
     }
+    
+    public void saveFileAs(String texto) {
+		
+		fileDialog.setTitle("Save Resume");
+		fileDialog.setInitialFileName("untitled.txt");
+		file = fileDialog.showSaveDialog(new Stage());
+		 
+		if (file == null) {
+			return;
+		}
+	
+		try {
+			
+			// Write the HTML contents to the file. Overwrite the existing file.
+                        Files.write(file.toPath(), texto.getBytes());
+			
+		}catch(IOException e) {
+			
+			e.printStackTrace();
+			
+		}
+	}
+    
+    public void saveFile(String texto) {
+		 
+		if (file == null) {
+                        fileDialog.setTitle("Save Resume");
+                        fileDialog.setInitialFileName("untitled.txt");
+                        file = fileDialog.showSaveDialog(new Stage());
+                        if (file == null) {
+                            return;
+                        }
+		}
+	
+		try {
+			
+			// Write the HTML contents to the file. Overwrite the existing file.
+                        Files.write(file.toPath(), texto.getBytes());
+			
+		}catch(IOException e) {
+			
+			e.printStackTrace();
+			
+		}
+	}
     
 }

@@ -28,7 +28,6 @@ public class FXMLDocumentController implements Initializable {
     
     
     @FXML private void TextAreaArray(Event event){
-        System.out.println("LL");
         ct.setString(TextoArea.getText());
         
     }
@@ -79,14 +78,16 @@ public class FXMLDocumentController implements Initializable {
      
     @FXML private void abrir(ActionEvent event){
         TextoArea.setText(ct.openFile());
+        ct.setString(TextoArea.getText());
     }
      
     @FXML private void guardar(ActionEvent event){
+        ct.saveFile(TextoArea.getText());
         
     }
     
     @FXML private void guardarComo(ActionEvent event){
-        // code pendiente
+        ct.saveFileAs(TextoArea.getText());
     }
     @FXML private void selectColor(ActionEvent event){
         // code pendiente
