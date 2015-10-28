@@ -9,25 +9,35 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 /**
  *
- * @author ealbores
+ * @author kkkk
  */
 
 public class FXMLDocumentController implements Initializable {
     
-    @FXML
-    private Label label;
+    @FXML private Label label,numCaracteres,numFilas;
+    @FXML ColorPicker colorPicker;
+    @FXML Button btnAplicar;
     @FXML TextArea TextoArea;
     
-    Controla ct = new Controla();
+    private Controla ct = new Controla();
+    private long ContadorFilas = 0;
+    private int ContadorCaracteres = 0;
+    
     
     @FXML private void TextAreaArray(Event event){
-        System.out.println("LL");
+        this.ContadorCaracteres = ct.getString();
+        this.numCaracteres.setText("Caracteres: " + this.ContadorCaracteres);
+        //this.numCaracteres.setText("Caracteres: " + this.numCaracteres.getText().length());
+        
+        
         ct.setString(TextoArea.getText());
         
     }
@@ -38,16 +48,7 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML private void deshacer(ActionEvent event){
-        
-        try{
             TextoArea.setText(ct.deshacer());
-        }catch(Exception e){
-            Alert alert1 = new Alert(AlertType.INFORMATION);
-            alert1.setTitle("No hay nada que sacar!");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Sin elementos");
-            alert1.showAndWait();
-        }
     }
     
     @FXML private void salir(ActionEvent event){
@@ -84,11 +85,38 @@ public class FXMLDocumentController implements Initializable {
 
         
     }
+     
+    @FXML private void abrir(ActionEvent event){
+        TextoArea.setText(ct.openFile());
+        ct.setString(TextoArea.getText());
+    }
+     
+    @FXML private void guardar(ActionEvent event){
+        ct.saveFile(TextoArea.getText());
+        
+    }
     
+    @FXML private void guardarComo(ActionEvent event){
+        ct.saveFileAs(TextoArea.getText());
+    }
+    @FXML private void selectColor(ActionEvent event){
+        // code pendiente
+    }
+
+    @FXML private void aplicarColor(ActionEvent event){
+        String hexColor = colorPicker.getValue().toString();
+        System.out.println("antes : " + hexColor);
+        String hexColorFill = hexColor.substring(2,hexColor.length() - 2);
+        
+        this.TextoArea.setStyle("-fx-text-fill: #" + hexColorFill.trim());
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        /*
+        this.TextoArea.setStyle("-fx-background-color: red;" +
+                                "-fx-text-fill: red;");
+        */
     }    
     
 }
